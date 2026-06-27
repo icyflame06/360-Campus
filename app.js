@@ -957,6 +957,30 @@ function setupEventListeners() {
     });
   }
 
+  // --- FLOOR PLAN TAB SWITCHER ---
+  document.querySelectorAll('.map-floor-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const floor = btn.getAttribute('data-floor');
+      // Update active tab button
+      document.querySelectorAll('.map-floor-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      // Show the matching SVG floor, hide others
+      document.querySelectorAll('.floor-svg').forEach(svg => svg.classList.remove('active'));
+      const targetSvg = document.getElementById(`floor-${floor}`);
+      if (targetSvg) targetSvg.classList.add('active');
+      // Update status overlay
+      const labels = {
+        ground: '📍 Ground Floor · Reception, Admin, Seminar Hall, Parking',
+        first:  '📚 1st Floor · Library, Computer Lab, 3 Classrooms, Staff Room',
+        second: '🏫 2nd Floor · 4 Classrooms, WC, Staircase & Lift',
+        third:  '🏫 3rd Floor · 4 Classrooms, WC, Staircase & Lift',
+        terrace:'🌤️ Terrace Floor · Open Rooftop Space'
+      };
+      const statusEl = document.getElementById('map-status-txt');
+      if (statusEl) statusEl.innerText = labels[floor] || '';
+      playSynthBeep(480, 'sine', 0.07);
+    });
+  });
 
   // View Navigation Toggles (Includes locked intercept logic)
   document.querySelectorAll('.sidebar .menu-item').forEach(item => {

@@ -699,17 +699,88 @@ body.theme-contrast .glass-card {
 /* Map Canvas Container */
 .map-canvas-container {
   width: 100%;
-  height: 380px;
+  height: 430px;
   background: #101625;
   border-radius: 12px;
   border: 1px solid var(--border-glass);
   overflow: hidden;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 body.theme-light .map-canvas-container {
   background: #e2e8f0;
 }
+
+/* Floor Tab Selector Bar */
+.map-floor-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 8px 10px 0;
+  background: rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid var(--border-glass);
+  flex-shrink: 0;
+  z-index: 5;
+}
+
+body.theme-light .map-floor-tabs {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.map-floor-btn {
+  padding: 5px 12px;
+  border: 1px solid var(--border-glass);
+  border-bottom: none;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-text-secondary);
+  font-size: 0.72rem;
+  font-weight: 600;
+  border-radius: 6px 6px 0 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.3px;
+  font-family: var(--font-primary);
+}
+
+.map-floor-btn:hover {
+  background: rgba(99, 102, 241, 0.12);
+  color: var(--color-text-primary);
+}
+
+.map-floor-btn.active {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: rgba(99, 102, 241, 0.5);
+  color: #a5b4fc;
+}
+
+body.theme-light .map-floor-btn {
+  background: rgba(0, 0, 0, 0.04);
+  color: #475569;
+}
+
+body.theme-light .map-floor-btn.active {
+  background: rgba(79, 70, 229, 0.15);
+  color: #312e81;
+}
+
+/* SVG Floor Plan */
+.floor-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.floor-svg.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+
 
 /* Canvas map design */
 .campus-map-visual {
