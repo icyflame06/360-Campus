@@ -878,6 +878,21 @@ body.theme-light .map-status-overlay {
   transition: border var(--transition-speed);
 }
 
+.form-control option {
+  background: #111827;
+  color: #f8fafc;
+}
+
+body.theme-light .form-control option {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+body.theme-contrast .form-control option {
+  background: #000000;
+  color: #ffffff;
+}
+
 body.theme-light .form-control {
   background: rgba(0, 0, 0, 0.03);
   border-color: rgba(0, 0, 0, 0.1);
