@@ -142,21 +142,23 @@ const Permissions = {
   },
   librarian: {
     dashboard: true,
-    safety: false, // Locked out
-    eco: false, // Locked out
+    safety: true,        // Can report hazards near library
+    eco: true,           // Tracks library energy/water usage
     accessibility: true,
-    autobook: true, // Overrides matrix
-    buzz: true, // Read-only dashboard access
-    info: true
+    autobook: true,      // Full room vacancy override control
+    buzz: true,          // Read-only Buzz board access
+    info: true,
+    manage_rooms: true   // Exclusive: Librarian vacancy management
   },
   admin: {
     dashboard: true,
-    safety: true, // Resolves reports
-    eco: false, // Locked out
+    safety: true,        // Can resolve/manage all reports
+    eco: true,           // Full sustainability data oversight
     accessibility: true,
-    autobook: true, // Read-only matrix
-    buzz: true, // Can delete inappropriate posts
-    info: true
+    autobook: true,      // Full booking matrix oversight
+    buzz: true,          // Can delete inappropriate posts
+    info: true,
+    manage_rooms: true   // Can override room states campus-wide
   }
 };
 
@@ -347,9 +349,9 @@ function changeRole(roleName) {
     if (bannerText) bannerText.innerText = `Perspective Mode: ${roleName.toUpperCase()}`;
     
     let helpMsg = "Standard student portal view.";
-    if (roleName === 'admin') helpMsg = "Authorized to publish announcements, moderate boards, and resolve safety files.";
+    if (roleName === 'admin') helpMsg = "Full access: Resolve safety reports, manage room bookings, oversee eco data, moderate announcements.";
     if (roleName === 'tutor') helpMsg = "Specialty settings and tutoring schedule database console.";
-    if (roleName === 'librarian') helpMsg = "Study Room bookings override mode is active. Click slots below to update states.";
+    if (roleName === 'librarian') helpMsg = "Library manager view: Manage room vacancies, report hazards, monitor eco stats.";
     
     if (bannerHelp) bannerHelp.innerText = helpMsg;
   }
@@ -393,11 +395,7 @@ function changeRole(roleName) {
   // Action level adjustments: Lock rewards card if not student/tutor
   const rewardsCard = document.getElementById('eco-rewards-card-blockable');
   if (rewardsCard) {
-    if (roleName === 'admin' || roleName === 'librarian') {
-      rewardsCard.style.opacity = '0.5';
-    } else {
-      rewardsCard.style.opacity = '1';
-    }
+    rewardsCard.style.opacity = (roleName === 'student' || roleName === 'tutor') ? '1' : '0.5';
   }
 
   // Hide/Show posting inputs on Buzz board depending on role
@@ -413,11 +411,7 @@ function changeRole(roleName) {
   // Block locker cards for non-student roles
   const lockerCard = document.getElementById('autobook-locker-card-blockable');
   if (lockerCard) {
-    if (roleName === 'admin' || roleName === 'librarian') {
-      lockerCard.style.opacity = '0.5';
-    } else {
-      lockerCard.style.opacity = '1';
-    }
+    lockerCard.style.opacity = (roleName === 'student') ? '1' : '0.5';
   }
 
   // Re-sync Room Grid & Buzz Feed to apply Moderator Buttons
@@ -611,10 +605,18 @@ function renderBookingMatrix() {
 function handleRoomSlotClick(roomName, index) {
   const currentState = State.bookingMatrix[roomName][index];
 
-  // ADMIN ROLE LACK OF PERMISSIONS
+  // ADMIN ROLE: Full override – same cycle as librarian
   if (State.currentRole === 'admin') {
-    playSynthBeep(250, 'triangle', 0.25);
-    alert("Admin Perspective: Study Room Matrix is View-Only. Admins cannot make personal bookings.");
+    let nextState;
+    if (currentState === true) nextState = false;
+    else if (currentState === false || currentState === 'me') nextState = 'maintenance';
+    else if (currentState === 'maintenance') nextState = 'blocked';
+    else nextState = true;
+
+    State.bookingMatrix[roomName][index] = nextState;
+    playSynthBeep(700, 'sine', 0.12);
+    triggerNotification(`Admin: Updated ${roomName} slot ${State.bookingTimeSlots[index]} → ${nextState === true ? 'Available' : nextState.toString().toUpperCase()}`);
+    renderBookingMatrix();
     return;
   }
 
