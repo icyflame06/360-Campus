@@ -1,0 +1,11 @@
+{
+  "name": "campus360",
+  "version": "1.0.0",
+  "description": "Campus360 prototype web application.",
+  "scripts": {
+    "dev": "npx -y http-server -p 3000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

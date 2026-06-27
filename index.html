@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus360 - Smarter Campus, Better Tomorrow</title>
+  <meta name="description" content="An innovative, glassmorphic campus dashboard improving safety, sustainability, accessibility, and automation.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Ambient Glow Background Blobs -->
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
+
+  <div class="app-container">
+    
+    <!-- SIDEBAR NAVIGATION -->
+    <aside class="sidebar">
+      <div>
+        <div class="brand">
+          <div class="brand-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L2 22h20L12 2zm0 4l6.5 13H5.5L12 6zm-1 5h2v3h-2v-3zm0 4h2v2h-2v-2z" fill="#fff"/>
+            </svg>
+          </div>
+          <span class="brand-name">Campus360</span>
+        </div>
+        
+        <nav>
+          <ul class="sidebar-menu">
+            <li>
+              <a class="menu-item active" data-target="dashboard" id="nav-dashboard">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+                <span>Dashboard</span>
+                <!-- Inline padlock icon -->
+                <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              </a>
+            </li>
+            <li>
+              <a class="menu-item" data-target="safety" id="nav-safety">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span>CampusSafe</span>
+                <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              </a>
+            </li>
+            <li>
+              <a class="menu-item" data-target="eco" id="nav-eco">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                <span>EcoTrack</span>
+                <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              </a>
+            </li>
+            <li>
+              <a class="menu-item" data-target="accessibility" id="nav-accessibility">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8M8 12h8"></path></svg>
+                <span>AccessEasy</span>
+                <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              </a>
+            </li>
+            <li>
+              <a class="menu-item" data-target="autobook" id="nav-autobook">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <span>AutoBook</span>
+                <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              </a>
+            </li>
+            <li>
+              <a class="menu-item" data-target="buzz" id="nav-buzz">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                <span>CampusBuzz</span>
+                <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              </a>
+            </li>
+            <li>
+              <a class="menu-item" data-target="info" id="nav-info">
+                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <span>Info & Directory</span>
+                <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-badge">
+          <div class="user-avatar" id="sidebar-user-avatar">H</div>
+          <div class="user-info">
+            <div class="user-name" id="sidebar-user-name">Harshil Swami</div>
+            <div class="user-role" id="sidebar-user-role">Student (ID: 4892)</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN DISPLAY PANES -->
+    <main class="main-display">
+      
+      <!-- TOP NAVIGATION BAR -->
+      <header class="top-bar">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" placeholder="Search spaces, tutors, directory..." id="global-search">
+        </div>
+
+        <div class="top-bar-controls">
+          <!-- Unified Theme Switching -->
+          <select class="select-glass" id="select-theme" title="Choose Dashboard Theme">
+            <option value="dark">🌙 Dark Theme</option>
+            <option value="light">☀️ Light Theme</option>
+            <option value="contrast">👁️ Contrast Theme</option>
+          </select>
+
+          <!-- Dynamic Role Selection -->
+          <select class="select-glass" id="select-role" title="Switch User Role Perspective">
+            <option value="student">🎓 Student View</option>
+            <option value="admin">🛠️ Admin View</option>
+            <option value="tutor">🏫 Tutor View</option>
+            <option value="librarian">📚 Librarian View</option>
+          </select>
+
+          <!-- Notification Bell -->
+          <button class="btn-icon" id="btn-notifications" title="System Notifications">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span class="badge-dot" id="noti-badge"></span>
+          </button>
+
+          <!-- SOS Trigger -->
+          <button class="btn-sos" id="btn-sos-trigger">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            SOS Help
+          </button>
+        </div>
+      </header>
+
+      <!-- Dynamic Alert Ticker -->
+      <section class="notification-ticker" aria-label="Campus Alert Ticker">
+        <span class="ticker-label">Live Broadcast</span>
+        <div class="ticker-text" id="ticker-text">
+          🚍 Campus Shuttle Line Blue delayed by 8 minutes. ❄️ Free mental wellness hot chocolate in Campus Center until 2 PM. 💡 STEM Building solar expansion fully functional!
+        </div>
+      </section>
+
+      <!-- CONTENT VIEWPORT -->
+      <div class="content-viewport">
+        
+        <!-- SECTION 1: DASHBOARD OVERVIEW -->
+        <section id="section-dashboard" class="module-section active">
+          
+          <!-- Role specific context banner -->
+          <div class="role-badge-banner" id="dashboard-role-banner" style="display:none;">
+            <div class="role-badge-text" id="dashboard-role-text">Active Role: Student</div>
+            <div style="font-size: 0.78rem;" id="dashboard-role-help">You are viewing standard campus updates. Change role in the top bar.</div>
+          </div>
+
+          <div class="section-header">
+            <h1 class="section-title">Campus360 Dashboard</h1>
+            <p class="section-desc">Real-time indicators, smart updates, and sustainability tracking for the campus community.</p>
+          </div>
+
+          <!-- Quick statistics grid -->
+          <div class="grid-dashboard">
+            <div class="glass-card stat-card">
+              <div class="stat-icon primary">
+                <svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              </div>
+              <div class="stat-details">
+                <span class="stat-value" id="stat-safety-score">98%</span>
+                <span class="stat-label">Safety Index</span>
+              </div>
+            </div>
+
+            <div class="glass-card stat-card">
+              <div class="stat-icon success">
+                <svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              </div>
+              <div class="stat-details">
+                <span class="stat-value" id="stat-green-points">240</span>
+                <span class="stat-label">Green Points</span>
+              </div>
+            </div>
+
+            <div class="glass-card stat-card">
+              <div class="stat-icon secondary">
+                <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8M8 12h8"></path></svg>
+              </div>
+              <div class="stat-details">
+                <span class="stat-value" id="stat-elevator-rate">8 / 9</span>
+                <span class="stat-label">Lifts Online</span>
+              </div>
+            </div>
+
+            <div class="glass-card stat-card">
+              <div class="stat-icon warning">
+                <svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line></svg>
+              </div>
+              <div class="stat-details">
+                <span class="stat-value" id="stat-rooms-avail">12</span>
+                <span class="stat-label">Rooms Free</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Layout Split -->
+          <div class="grid-main">
+            <!-- Map Component -->
+            <div class="glass-card">
+              <h2 class="card-title">
+                <svg viewBox="0 0 24 24" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 15 9 18 3 15"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg>
+                Interactive Smart Map
+              </h2>
+              <div class="map-canvas-container">
+                <div class="campus-map-visual">
+                  <div class="map-grid-overlay"></div>
+                  <!-- Pathways -->
+                  <div class="map-pathway path-main"></div>
+                  <div class="map-pathway path-cross"></div>
+                  
+                  <!-- Buildings & Locations -->
+                  <div class="map-building bld-library">Library (M1)</div>
+                  <div class="map-building bld-stem safe">STEM Lab (M2)</div>
+                  <div class="map-building bld-union green">Student Union</div>
+                  <div class="map-building bld-dorms">Residential Halls</div>
+                  <div class="map-building bld-hub">Center Hub</div>
+                  
+                  <!-- Expanded Map Nodes -->
+                  <div class="map-building bld-science">Science Lab</div>
+                  <div class="map-building bld-gym">Gymnasium</div>
+                  <div class="map-building bld-parking">North Parking</div>
+                  <div class="map-building bld-gate">South Gate</div>
+                  <div class="map-building bld-eng">Engineering</div>
+
+                  <!-- User location pin -->
+                  <div class="map-pin" id="map-user-pin">
+                    <div class="ping-ring"></div>
+                  </div>
+                </div>
+                <div class="map-status-overlay" id="map-status-txt">
+                  Status: GPS Active. Standard Campus Safe Walk operational.
+                </div>
+              </div>
+            </div>
+
+            <!-- Side Widgets Panel -->
+            <div class="glass-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+              
+              <!-- STUDENT DASHBOARD QUICK ACTION -->
+              <div id="dash-action-student">
+                <h2 class="card-title">
+                  <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                  Quick Actions
+                </h2>
+                <p style="font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 1.2rem;">Log a recycling act to gain eco points immediately, or trigger a safety escort walk.</p>
+                
+                <div class="form-group">
+                  <label for="dash-eco-select">Rapid Eco-Log</label>
+                  <select id="dash-eco-select" class="form-control">
+                    <option value="bottle">Recycled Plastic Bottle (+10 pts)</option>
+                    <option value="can">Recycled Aluminum Can (+15 pts)</option>
+                    <option value="paper">Recycled Cardboard/Paper (+5 pts)</option>
+                  </select>
+                </div>
+                <button class="btn-primary" style="width: 100%; justify-content: center; margin-bottom: 1rem;" id="btn-dash-ecolog">
+                  Register Recycled Material
+                </button>
+              </div>
+
+              <!-- LIBRARIAN DASHBOARD QUICK ACTION -->
+              <div id="dash-action-librarian" style="display: none;">
+                <h2 class="card-title" style="color: var(--accent-secondary);">
+                  <svg viewBox="0 0 24 24" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path></svg>
+                  Librarian Room Manager
+                </h2>
+                <p style="font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 1.2rem;">As Librarian in-charge, clicking slots in the booking matrix will rotate their operational states.</p>
+                <div style="background: rgba(6, 182, 212, 0.08); border: 1px solid var(--accent-secondary); padding: 12px; border-radius: 8px; font-size: 0.8rem;">
+                  📚 <strong>Matrix Controls:</strong><br>
+                  - Tap to cycle: [Available] &rarr; [Occupied] &rarr; [Under Maintenance] &rarr; [Blocked for Event]
+                </div>
+              </div>
+
+              <!-- ADMIN DASHBOARD QUICK ACTION -->
+              <div id="dash-action-admin" style="display: none;">
+                <h2 class="card-title" style="color: var(--accent-warning);">
+                  <svg viewBox="0 0 24 24" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                  Admin Dispatch Controls
+                </h2>
+                <p style="font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 1rem;">Broadcasting new notices globally to student alerts ticker:</p>
+                <div class="form-group">
+                  <input type="text" id="admin-broadcast-input" class="form-control" placeholder="Type notice to push...">
+                </div>
+                <button class="btn-primary" style="width: 100%; justify-content: center;" id="btn-admin-broadcast">
+                  Publish Global Broadcast
+                </button>
+              </div>
+
+              <!-- TUTOR DASHBOARD QUICK ACTION -->
+              <div id="dash-action-tutor" style="display: none;">
+                <h2 class="card-title" style="color: var(--accent-success);">
+                  <svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path></svg>
+                  Tutor Control Center
+                </h2>
+                <p style="font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 1rem;">Manage your availability and specialization subjects list:</p>
+                <div class="form-group" style="display: flex; gap: 8px; align-items: center; margin-bottom: 12px;">
+                  <button class="btn-toggle active" id="btn-tutor-active">Status: Active (Online)</button>
+                </div>
+                <div class="form-group">
+                  <label>Add Specialization Subject</label>
+                  <div style="display: flex; gap: 6px;">
+                    <input type="text" id="tutor-new-subject" class="form-control" placeholder="e.g. MATH201" style="padding: 6px 12px;">
+                    <button class="btn-primary" id="btn-tutor-add-sub" style="padding: 6px 12px;">Add</button>
+                  </div>
+                </div>
+                <div style="font-size: 0.75rem; color: var(--color-text-secondary);">
+                  My specialties: <strong id="tutor-specialty-list">CS101, Calculus, Physics</strong>
+                </div>
+              </div>
+
+              <div style="border-top: 1px solid var(--border-glass); padding-top: 1.2rem; margin-top: 1rem;">
+                <h3 style="font-size: 0.9rem; font-weight: 700; margin-bottom: 6px;">Well-being Pulse</h3>
+                <p style="font-size: 0.78rem; color: var(--color-text-secondary); margin-bottom: 8px;">How are you feeling today?</p>
+                <div style="display: flex; gap: 8px;">
+                  <button class="btn-icon dash-mood-btn" data-mood="happy">😊</button>
+                  <button class="btn-icon dash-mood-btn" data-mood="tired">😴</button>
+                  <button class="btn-icon dash-mood-btn" data-mood="stressed">😰</button>
+                  <button class="btn-icon dash-mood-btn" data-mood="neutral">😐</button>
+                </div>
+                <div id="dash-mood-rec" class="support-recommendation" style="display: none; font-size: 0.78rem; padding: 8px; margin-top: 8px;"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 2: CAMPUSSAFE -->
+        <section id="section-safety" class="module-section">
+          <div class="section-header">
+            <h1 class="section-title">CampusSafe Guardian</h1>
+            <p class="section-desc">Accompanying you everywhere on campus. Request live escorts, report hazards, and alert safety command.</p>
+          </div>
+
+          <!-- Dynamic locked/allowed wrapper -->
+          <div id="safety-permissions-wrapper">
+            <div class="grid-safety">
+              <!-- Safe walk simulation card -->
+              <div class="glass-card">
+                <h2 class="card-title">
+                  <svg viewBox="0 0 24 24" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                  Virtual Safe-Walk Escort
+                </h2>
+                <p style="font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 1.2rem;">Walk safely. Campus Safety staff will track your virtual path in real-time. Select starts and endpoints below.</p>
+
+                <div class="form-group">
+                  <label for="escort-start">Starting Point</label>
+                  <select id="escort-start" class="form-control">
+                    <option value="library">Library Complex (M1)</option>
+                    <option value="stem">STEM Lab Block (M2)</option>
+                    <option value="union">Student Union Hall</option>
+                    <option value="dorms">Residential Halls (Block C)</option>
+                    <option value="hub">Center Hub Quad</option>
+                    <option value="science">Science Lecture Lab</option>
+                    <option value="gym">Gymnasium & Sports Complex</option>
+                    <option value="parking">North Parking Lot</option>
+                    <option value="gate">South Gate Bus Stop</option>
+                    <option value="eng">Engineering Wing</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="escort-end">Destination Point</label>
+                  <select id="escort-end" class="form-control">
+                    <option value="dorms">Residential Halls (Block C)</option>
+                    <option value="hub">Center Hub Quad</option>
+                    <option value="stem">STEM Lab Block (M2)</option>
+                    <option value="science">Science Lecture Lab</option>
+                    <option value="gym">Gymnasium & Sports Complex</option>
+                    <option value="parking">North Parking Lot</option>
+                    <option value="gate">South Gate Bus Stop</option>
+                    <option value="eng">Engineering Wing</option>
+                  </select>
+                </div>
+
+                <div style="display: flex; gap: 10px;">
+                  <button class="btn-primary" id="btn-request-escort">Start Virtual Walk</button>
+                  <button class="btn-outline" id="btn-cancel-escort" style="display: none;">Cancel Walk</button>
+                </div>
+
+                <!-- Escort visual tracker -->
+                <div id="escort-tracker-status" style="margin-top: 1.2rem; display: none;">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 6px;">
+                    <span id="escort-route-status">Tracking walk...</span>
+                    <span id="escort-percentage" style="font-weight: 700;">0%</span>
+                  </div>
+                  <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; border: 1px solid var(--border-glass);">
+                    <div id="escort-progress-bar" style="width: 0%; height: 100%; background: var(--accent-secondary); transition: width 0.5s ease-in-out;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Hazard reporting card -->
+              <div class="glass-card">
+                <h2 class="card-title">
+                  <svg viewBox="0 0 24 24" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
+                  Anonymous Hazard Reporter
+                </h2>
+                <form id="form-hazard-report" onsubmit="return false;">
+                  <div class="form-group">
+                    <label for="hazard-type">Hazard Classification</label>
+                    <select id="hazard-type" class="form-control">
+                      <option value="infrastructure">Infrastructure Damage (Broken light, lift, etc.)</option>
+                      <option value="environmental">Environmental Danger (Spills, icy stairs, etc.)</option>
+                      <option value="suspicious">Suspicious Behavior / Security Matter</option>
+                      <option value="electrical">Electrical Fault (Sparking, exposed wires)</option>
+                      <option value="leakage">Flooding / Leakage (Drainage, burst pipes)</option>
+                      <option value="fire">Fire Hazard (Blocked fire exits, alarm failure)</option>
+                      <option value="access">Accessibility Blockage (Blocked ramps, lifts offline)</option>
+                      <option value="other">Other (Custom Classification...)</option>
+                    </select>
+                  </div>
+
+                  <!-- Custom Classification text field -->
+                  <div class="form-group" id="custom-hazard-group" style="display: none;">
+                    <label for="custom-hazard-type">Enter Custom Classification</label>
+                    <input type="text" id="custom-hazard-type" class="form-control" placeholder="e.g. Broken wooden park bench">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="hazard-location">Accurate Location</label>
+                    <input type="text" id="hazard-location" class="form-control" placeholder="e.g. STEM Building stairs, Library floor 2 east wing" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="hazard-desc">Details / Context</label>
+                    <textarea id="hazard-desc" class="form-control" placeholder="Provide description..." required></textarea>
+                  </div>
+
+                  <button class="btn-primary" type="submit" id="btn-submit-hazard">Submit Hazard Report</button>
+                </form>
+
+                <!-- Recent hazard list log -->
+                <h3 style="font-size: 0.9rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.5rem;">Recent Logs</h3>
+                <div class="reports-list" id="hazard-reports-list">
+                  <!-- Injected dynamically -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 3: ECOTRACK -->
+        <section id="section-eco" class="module-section">
+          <div class="section-header">
+            <h1 class="section-title">EcoTrack Sustainability</h1>
+            <p class="section-desc">Track real-time energy conservation stats and log your active recycle habits to claim rewards.</p>
+          </div>
+
+          <div id="eco-permissions-wrapper">
+            <div class="grid-eco">
+              <!-- Sustainability charts -->
+              <div class="glass-card">
+                <h2 class="card-title">
+                  <svg viewBox="0 0 24 24" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                  Weekly Resource Utilization
+                </h2>
+                <div style="display: flex; gap: 12px; margin-bottom: 12px;">
+                  <button class="btn-toggle active" id="btn-chart-electricity">Electricity (kWh)</button>
+                  <button class="btn-toggle" id="btn-chart-water">Water (Gallons)</button>
+                </div>
+
+                <!-- Animated Chart Bars -->
+                <div class="eco-chart-box" id="eco-chart-display">
+                  <!-- Injected dynamically based on selected toggle -->
+                </div>
+              </div>
+
+              <!-- Eco rewards panel -->
+              <div class="glass-card" id="eco-rewards-card-blockable">
+                <h2 class="card-title">
+                  <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="8" r="7"></circle></svg>
+                  My Eco Points Ledger
+                </h2>
+                <div class="points-circle">
+                  <div class="points-number" id="eco-points-display">240</div>
+                  <div class="points-text">Total Points</div>
+                </div>
+                
+                <div style="margin-top: 1.5rem;">
+                  <h3 style="font-size: 0.9rem; font-weight: 700; margin-bottom: 8px;">Claim Campus Incentives</h3>
+                  <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <button class="btn-toggle" style="width: 100%; justify-content: space-between;" id="btn-claim-coffee" data-cost="150">
+                      <span>☕ Free Coffee at Cafeteria</span>
+                      <strong>150 pts</strong>
+                    </button>
+                    <button class="btn-toggle" style="width: 100%; justify-content: space-between;" id="btn-claim-print" data-cost="100">
+                      <span>🖨️ 50 Free Printing Pages</span>
+                      <strong>100 pts</strong>
+                    </button>
+                    <button class="btn-toggle" style="width: 100%; justify-content: space-between;" id="btn-claim-parking" data-cost="500">
+                      <span>🚗 1-Week Priority Parking Pass</span>
+                      <strong>500 pts</strong>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 4: ACCESSEASY -->
+        <section id="section-accessibility" class="module-section">
+          <div class="section-header">
+            <h1 class="section-title">AccessEasy Assistant</h1>
+            <p class="section-desc">Customize reading preferences and review elevator, lift, and wheelchair ramp operational status.</p>
+          </div>
+
+          <!-- Adjustments toolbar -->
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <h2 class="card-title">
+              <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg>
+              Accessibility Options
+            </h2>
+            <div class="accessibility-toolbar">
+              <button class="btn-toggle" id="btn-toggle-contrast">⚠️ Toggle High Contrast</button>
+              <button class="btn-toggle" id="btn-toggle-font">🔠 Enlarge UI Typography</button>
+              <button class="btn-toggle" id="btn-toggle-tts">📣 Voice Assist Reader</button>
+            </div>
+            <p id="tts-indicator" style="font-size: 0.78rem; color: var(--accent-secondary); display: none; font-weight: 600;">📣 Voice Assist Active: Hover or click elements to read text aloud.</p>
+          </div>
+
+          <div class="grid-accessibility">
+            <!-- Lift status monitor -->
+            <div class="glass-card">
+              <h2 class="card-title">
+                <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline></svg>
+                Campus Elevator & Lift Status
+              </h2>
+              <table class="access-table">
+                <thead>
+                  <tr>
+                    <th>Location</th>
+                    <th>Equipment Type</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="access-equipment-tbody">
+                  <!-- Injected dynamically -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Broken ramp/elevator reporting -->
+            <div class="glass-card">
+              <h2 class="card-title">
+                <svg viewBox="0 0 24 24" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                Report Accessibility Failure
+              </h2>
+              <p style="font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 1.2rem;">Help keep our campus accessible. Inform facility services of elevator malfunctions or ramp blockages.</p>
+
+              <form id="form-accessibility-report" onsubmit="return false;">
+                <div class="form-group">
+                  <label for="access-bld">Location Building</label>
+                  <select id="access-bld" class="form-control">
+                    <option value="library">Library Complex</option>
+                    <option value="stem">STEM Lab Block</option>
+                    <option value="union">Student Union</option>
+                    <option value="dorms">Residential Halls</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="access-type">Equipment Type</label>
+                  <select id="access-type" class="form-control">
+                    <option value="elevator">Elevator / Lift</option>
+                    <option value="ramp">Wheelchair Ramp / Access Door</option>
+                    <option value="braille">Braille signage / Audio assistance</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="access-desc">Failure Details</label>
+                  <textarea id="access-desc" class="form-control" placeholder="Describe the failure, e.g. elevator stuck on floor 3, door sensor unresponsive..." required></textarea>
+                </div>
+
+                <button class="btn-primary" type="submit" id="btn-submit-access-report">File Maintenance Report</button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 5: AUTOBOOK (RESERVATIONS) -->
+        <section id="section-autobook" class="module-section">
+          <div class="section-header">
+            <h1 class="section-title">AutoBook Smart Reserve</h1>
+            <p class="section-desc">Automated study room scheduler and smart storage locker allocations.</p>
+          </div>
+
+          <!-- Study rooms scheduler -->
+          <div class="glass-card" style="margin-bottom: 1.5rem;">
+            <h2 class="card-title">
+              <svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+              Library Study Rooms Schedule Matrix
+            </h2>
+            <p style="font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 8px;" id="booking-role-guide">Click any available green slot below to book. You can click again to cancel your booking.</p>
+            
+            <div class="booking-grid-wrapper">
+              <table class="booking-matrix">
+                <thead>
+                  <tr>
+                    <th>Study Room</th>
+                    <th>09:00 - 11:00</th>
+                    <th>11:00 - 13:00</th>
+                    <th>13:00 - 15:00</th>
+                    <th>15:00 - 17:00</th>
+                  </tr>
+                </thead>
+                <tbody id="booking-matrix-tbody">
+                  <!-- Injected dynamically -->
+                </tbody>
+              </table>
+            </div>
+
+            <div class="booking-key">
+              <div class="key-item">
+                <div class="key-box slot-available" style="height: 14px; width: 14px;"></div>
+                <span>Available</span>
+              </div>
+              <div class="key-item">
+                <div class="key-box slot-booked" style="height: 14px; width: 14px;"></div>
+                <span>Occupied</span>
+              </div>
+              <div class="key-item">
+                <div class="key-box slot-my-booking" style="height: 14px; width: 14px;"></div>
+                <span>Your Reservation</span>
+              </div>
+              <div class="key-item librarian-key-only" style="display: none;">
+                <div class="key-box slot-maintenance" style="height: 14px; width: 14px;"></div>
+                <span>Librarian: Maintenance</span>
+              </div>
+              <div class="key-item librarian-key-only" style="display: none;">
+                <div class="key-box slot-blocked" style="height: 14px; width: 14px;"></div>
+                <span>Librarian: Blocked for Event</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lockers check-out -->
+          <div class="glass-card" style="max-width: 600px;" id="autobook-locker-card-blockable">
+            <h2 class="card-title">
+              <svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+              Smart Digital Lockers Checkout
+            </h2>
+            <p style="font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 1.2rem;">Need temporary storage on campus? Check out a secure digital locker instantly.</p>
+            
+            <div style="display: flex; gap: 12px; align-items: center;" id="locker-unassigned-view">
+              <button class="btn-primary" id="btn-request-locker">Allocate Locker</button>
+              <span style="font-size: 0.82rem; color: var(--color-text-muted);">Locations: Center Hub Ground Floor</span>
+            </div>
+
+            <div id="locker-assigned-view" style="display: none; background: rgba(6, 182, 212, 0.1); border: 1px solid var(--accent-secondary); padding: 14px; border-radius: 8px;">
+              <h3 style="font-weight: 700; color: #fff; font-size: 0.95rem; margin-bottom: 6px;">Locker Allocated Successfully!</h3>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.82rem; color: var(--color-text-secondary);">
+                <div>Locker Number: <strong style="color: #fff;" id="assigned-locker-num">#A-108</strong></div>
+                <div>Location: <strong style="color: #fff;">Hub Level 1</strong></div>
+                <div>Access Pin Code: <strong style="color: var(--accent-secondary); font-size: 1rem;" id="assigned-locker-pin">4920</strong></div>
+                <div>Expiry: <strong style="color: #fff;">Today, 8:00 PM</strong></div>
+              </div>
+              <button class="btn-outline" id="btn-release-locker" style="margin-top: 10px; padding: 6px 12px; font-size: 0.75rem;">Release Locker</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 6: CAMPUSBUZZ & WELL-BEING -->
+        <section id="section-buzz" class="module-section">
+          <div class="section-header">
+            <h1 class="section-title">CampusBuzz Communication</h1>
+            <p class="section-desc">Unified boards for peer announcements, direct tutor matches, and wellbeing mood checkers.</p>
+          </div>
+
+          <div class="well-being-layout">
+            
+            <!-- Peer feed -->
+            <div class="glass-card">
+              <h2 class="card-title">
+                <svg viewBox="0 0 24 24" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                Community Buzz Board
+              </h2>
+              
+              <div class="buzz-input-group" id="buzz-input-bar-blockable">
+                <input type="text" id="buzz-input-text" class="form-control" placeholder="Share updates, lost & found items, or study groups...">
+                <button class="btn-primary" id="btn-post-buzz">Publish</button>
+              </div>
+
+              <div class="buzz-feed" id="buzz-feed-list">
+                <!-- Injected dynamically -->
+              </div>
+            </div>
+
+            <!-- Tutors & wellbeing -->
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+              <!-- Wellbeing Selector -->
+              <div class="glass-card" id="wellbeing-card-blockable">
+                <h2 class="card-title">
+                  <svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3c3.08 0 5.5 2.42 5.5 5.5 0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+                  Student Well-being Hub
+                </h2>
+                <p style="font-size: 0.85rem; color: var(--color-text-secondary);">Select a face representing your current focus. We'll suggest motivational guidance and campus support resources.</p>
+                
+                <div class="mood-selector">
+                  <button class="mood-btn" data-mood="happy">😊<span>Happy</span></button>
+                  <button class="mood-btn" data-mood="tired">😴<span>Tired</span></button>
+                  <button class="mood-btn" data-mood="stressed">😰<span>Stressed</span></button>
+                  <button class="mood-btn" data-mood="neutral">😐<span>Neutral</span></button>
+                  <button class="mood-btn" data-mood="lonely">🥺<span>Lonely</span></button>
+                </div>
+
+                <div id="wellbeing-mood-rec" class="support-recommendation" style="display: none;">
+                  <!-- Suggested resources & motivational quotes injected dynamically -->
+                </div>
+              </div>
+
+              <!-- Peer tutoring matching -->
+              <div class="glass-card">
+                <h2 class="card-title">
+                  <svg viewBox="0 0 24 24" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                  TutorMatch Finder
+                </h2>
+                <p style="font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 0.8rem;">Struggling in class? Match with qualified student tutors in specific courses.</p>
+                
+                <div class="form-group">
+                  <input type="text" id="tutor-search-input" class="form-control" placeholder="Search courses (e.g. CS101, Calculus, Physics)...">
+                </div>
+
+                <div class="tutor-list" id="tutor-results-list">
+                  <!-- Injected dynamically -->
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- SECTION 7: CAMPUS DIRECTORY & INFO -->
+        <section id="section-info" class="module-section">
+          <div class="section-header">
+            <h1 class="section-title">Campus Directory & Help Desk</h1>
+            <p class="section-desc">Key campus helplines, academic faculties registry, and directors directory details.</p>
+          </div>
+
+          <div class="info-grid">
+            <!-- Left Side: Directory & Faculties -->
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+              <!-- Admin Leadership Board -->
+              <div class="glass-card">
+                <h2 class="card-title">
+                  <svg viewBox="0 0 24 24" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                  Campus Directors & Leadership
+                </h2>
+                <div class="directory-grid">
+                  <div class="directory-card">
+                    <div class="directory-avatar">AM</div>
+                    <div class="directory-details">
+                      <span class="directory-name">Dr. Arvind Mehta</span>
+                      <span class="directory-role">Director of College / President</span>
+                      <a href="mailto:director@campus360.edu" class="directory-email">director@campus360.edu</a>
+                    </div>
+                  </div>
+                  <div class="directory-card">
+                    <div class="directory-avatar">RV</div>
+                    <div class="directory-details">
+                      <span class="directory-name">Dr. Rebecca Vance</span>
+                      <span class="directory-role">Dean of Academic Affairs</span>
+                      <a href="mailto:dean.academics@campus360.edu" class="directory-email">r.vance@campus360.edu</a>
+                    </div>
+                  </div>
+                  <div class="directory-card">
+                    <div class="directory-avatar">KG</div>
+                    <div class="directory-details">
+                      <span class="directory-name">Dr. Keith Geller</span>
+                      <span class="directory-role">Dean of Student Well-being</span>
+                      <a href="mailto:student.dean@campus360.edu" class="directory-email">k.geller@campus360.edu</a>
+                    </div>
+                  </div>
+                  <div class="directory-card">
+                    <div class="directory-avatar">SM</div>
+                    <div class="directory-details">
+                      <span class="directory-name">Shreya Mishra</span>
+                      <span class="directory-role">Registrar & Admissions Chief</span>
+                      <a href="mailto:registrar@campus360.edu" class="directory-email">s.mishra@campus360.edu</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Faculties Registry -->
+              <div class="glass-card">
+                <h2 class="card-title">
+                  <svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path></svg>
+                  Faculty Members Directory
+                </h2>
+                <div class="directory-grid">
+                  <div class="directory-card">
+                    <div class="directory-avatar">AD</div>
+                    <div class="directory-details">
+                      <span class="directory-name">Prof. Arthur Davis</span>
+                      <span class="directory-role">Head of Computer Science</span>
+                      <a href="mailto:a.davis@campus360.edu" class="directory-email">a.davis@campus360.edu</a>
+                    </div>
+                  </div>
+                  <div class="directory-card">
+                    <div class="directory-avatar">ML</div>
+                    <div class="directory-details">
+                      <span class="directory-name">Dr. Margaret Lopez</span>
+                      <span class="directory-role">Professor of Applied Mathematics</span>
+                      <a href="mailto:m.lopez@campus360.edu" class="directory-email">m.lopez@campus360.edu</a>
+                    </div>
+                  </div>
+                  <div class="directory-card">
+                    <div class="directory-avatar">JK</div>
+                    <div class="directory-details">
+                      <span class="directory-name">Dr. Julian Kovic</span>
+                      <span class="directory-role">Senior Faculty, Physics Dept</span>
+                      <a href="mailto:j.kovic@campus360.edu" class="directory-email">j.kovic@campus360.edu</a>
+                    </div>
+                  </div>
+                  <div class="directory-card">
+                    <div class="directory-avatar">ES</div>
+                    <div class="directory-details">
+                      <span class="directory-name">Dr. Evelyn Sterling</span>
+                      <span class="directory-role">Associate Professor, Chemistry</span>
+                      <a href="mailto:e.sterling@campus360.edu" class="directory-email">e.sterling@campus360.edu</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Side: Helplines -->
+            <div class="glass-card">
+              <h2 class="card-title">
+                <svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                Emergency Contacts & Helplines
+              </h2>
+              <p style="font-size:0.82rem; color:var(--color-text-secondary); margin-bottom: 1rem;">Keep these quick contact dials ready for any emergency situations on campus.</p>
+              
+              <div style="display:flex; flex-direction:column; gap:12px;">
+                <div class="helpline-card" style="border-left: 4px solid var(--accent-danger);">
+                  <span style="font-size:0.8rem; font-weight:700; text-transform:uppercase; color:var(--accent-danger);">Safety Police Dispatch</span>
+                  <span class="helpline-phone">+1 (555) 911-3600</span>
+                  <small style="color:var(--color-text-muted);">Available 24/7. Fits direct emergency calls.</small>
+                </div>
+                <div class="helpline-card" style="border-left: 4px solid var(--accent-warning);">
+                  <span style="font-size:0.8rem; font-weight:700; text-transform:uppercase; color:var(--accent-warning);">Medical Wellness Desk</span>
+                  <span class="helpline-phone">+1 (555) 244-4357</span>
+                  <small style="color:var(--color-text-muted);">Mental wellbeing counselling & first-aid support.</small>
+                </div>
+                <div class="helpline-card" style="border-left: 4px solid var(--accent-primary);">
+                  <span style="font-size:0.8rem; font-weight:700; text-transform:uppercase; color:var(--accent-primary);">Facility & Maintenance</span>
+                  <span class="helpline-phone">+1 (555) 300-8800</span>
+                  <small style="color:var(--color-text-muted);">Report leaks, outages, elevator stucks.</small>
+                </div>
+                <div class="helpline-card" style="border-left: 4px solid var(--accent-secondary);">
+                  <span style="font-size:0.8rem; font-weight:700; text-transform:uppercase; color:var(--accent-secondary);">General IT Help Desk</span>
+                  <span class="helpline-phone">+1 (555) 484-9340</span>
+                  <small style="color:var(--color-text-muted);">Assists with student login, Wi-Fi credentials.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- SOS MODAL POPUP -->
+  <div class="modal-overlay" id="modal-sos-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 style="font-weight: 800; color: var(--accent-danger); display: flex; align-items: center; gap: 8px;">
+          🚨 SOS EMERGENCY TRIGGER
+        </h2>
+        <button class="modal-close" id="btn-close-sos">&times;</button>
+      </div>
+      <p style="font-size: 0.9rem; line-height: 1.5; color: var(--color-text-secondary);">
+        You are initiating an emergency response broadcast. Safety Command and Campus Police will receive your active GPS coordinates instantly.
+      </p>
+      
+      <div class="sos-trigger-animation" id="btn-sos-pulse">
+        SOS
+      </div>
+
+      <div style="text-align: center; font-size: 0.9rem; font-weight: bold; margin-top: 10px;" id="sos-countdown-txt">
+        Release to cancel (3)
+      </div>
+
+      <div id="sos-success-alert" style="display: none; background: rgba(239, 68, 68, 0.15); border: 1px solid var(--accent-danger); padding: 12px; border-radius: 8px; font-size: 0.82rem; color: #fca5a5; margin-top: 12px; text-align: center;">
+        📢 <strong>Dispatching Emergency Unit:</strong> Help is on the way to Library M1. Hold tight!
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTIFICATIONS DRAWER -->
+  <div class="notification-drawer" id="notification-drawer">
+    <div class="drawer-header">
+      <span>Notifications & Alerts</span>
+      <span style="color: var(--accent-primary); cursor: pointer;" id="btn-clear-notifications">Mark all read</span>
+    </div>
+    <div class="drawer-body" id="notification-drawer-body">
+      <!-- Dynamic notification items -->
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
