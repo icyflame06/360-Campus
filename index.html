@@ -9,11 +9,56 @@
 </head>
 <body>
 
+  <!-- LOGIN SCREEN PORTAL -->
+  <div class="login-screen" id="login-container">
+    <div class="login-ambient-1"></div>
+    <div class="login-ambient-2"></div>
+    <div class="login-card" id="login-card-el">
+      <div class="brand" style="justify-content: center; margin-bottom: 1.5rem;">
+        <div class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 22h20L12 2zm0 4l6.5 13H5.5L12 6zm-1 5h2v3h-2v-3zm0 4h2v2h-2v-2z" fill="#fff"/>
+          </svg>
+        </div>
+        <span class="brand-name">Campus360</span>
+      </div>
+      <h2 style="text-align: center; font-size: 1.3rem; margin-bottom: 4px; font-weight: 800;">Welcome to Campus360</h2>
+      <p style="text-align: center; font-size: 0.8rem; color: var(--color-text-secondary); margin-bottom: 1.5rem;">Log in using your Student or Staff credentials.</p>
+      
+      <div id="login-error-msg" style="display: none; background: rgba(239, 68, 68, 0.15); border: 1px solid var(--accent-danger); padding: 8px 12px; border-radius: 8px; font-size: 0.8rem; color: #fca5a5; margin-bottom: 1rem; text-align: center; font-weight: 600;">
+        Invalid ID or Password.
+      </div>
+
+      <form id="form-login" onsubmit="return false;">
+        <div class="form-group">
+          <label for="login-id">Student / Staff ID</label>
+          <input type="text" id="login-id" class="form-control" placeholder="e.g. student or admin" required autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="login-pass">Password</label>
+          <input type="password" id="login-pass" class="form-control" placeholder="••••••••" required autocomplete="current-password">
+        </div>
+        <button class="btn-primary" type="submit" style="width: 100%; justify-content: center; margin-top: 6px;">Sign In</button>
+      </form>
+
+      <div style="margin-top: 1.5rem; border-top: 1px solid var(--border-glass); padding-top: 1rem;">
+        <h3 style="font-size: 0.78rem; text-transform: uppercase; color: var(--accent-primary); letter-spacing: 0.5px; margin-bottom: 8px; font-weight: 700;">Demo Portal Access Logins</h3>
+        <div style="font-size: 0.72rem; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; color: var(--color-text-secondary);">
+          <div><strong>Role View</strong></div><div><strong>ID / Password</strong></div>
+          <div>Student Portal</div><div><code>student</code> / <code>student123</code></div>
+          <div>Admin Center</div><div><code>admin</code> / <code>admin123</code></div>
+          <div>Tutor Dashboard</div><div><code>tutor</code> / <code>tutor123</code></div>
+          <div>Librarian Matrix</div><div><code>librarian</code> / <code>librarian123</code></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Ambient Glow Background Blobs -->
   <div class="ambient-glow-1"></div>
   <div class="ambient-glow-2"></div>
 
-  <div class="app-container">
+  <div class="app-container" style="display: none;">
     
     <!-- SIDEBAR NAVIGATION -->
     <aside class="sidebar">
@@ -91,6 +136,7 @@
             <div class="user-role" id="sidebar-user-role">Student (ID: 4892)</div>
           </div>
         </div>
+        <button class="btn-outline" id="btn-logout" style="width:100%; margin-top:8px; padding:6px 12px; font-size:0.75rem; border-color:var(--accent-danger); color:var(--accent-danger); border-radius:8px;">Log Out</button>
       </div>
     </aside>
 
@@ -110,14 +156,6 @@
             <option value="dark">🌙 Dark Theme</option>
             <option value="light">☀️ Light Theme</option>
             <option value="contrast">👁️ Contrast Theme</option>
-          </select>
-
-          <!-- Dynamic Role Selection -->
-          <select class="select-glass" id="select-role" title="Switch User Role Perspective">
-            <option value="student">🎓 Student View</option>
-            <option value="admin">🛠️ Admin View</option>
-            <option value="tutor">🏫 Tutor View</option>
-            <option value="librarian">📚 Librarian View</option>
           </select>
 
           <!-- Notification Bell -->

@@ -1,5 +1,6 @@
 // --- CAMPUS360 APPLICATION STATE ---
 const State = {
+  isLoggedIn: false,
   activeView: 'dashboard',
   greenPoints: 240,
   roomsFree: 12,
@@ -109,6 +110,14 @@ const State = {
   accessibilitySettings: {
     textToSpeech: false
   }
+};
+
+// --- MOCK CREDENTIALS DATABASE ---
+const Credentials = {
+  student: { pass: 'student123', role: 'student' },
+  admin: { pass: 'admin123', role: 'admin' },
+  tutor: { pass: 'tutor123', role: 'tutor' },
+  librarian: { pass: 'librarian123', role: 'librarian' }
 };
 
 // --- ROLE-BASED ACCESS CONTROL (RBAC) CONFIG MATRIX ---
@@ -946,13 +955,6 @@ function setupEventListeners() {
     });
   }
 
-  // Role Dropdown Selector
-  const roleSelect = document.getElementById('select-role');
-  if (roleSelect) {
-    roleSelect.addEventListener('change', (e) => {
-      changeRole(e.target.value);
-    });
-  }
 
   // View Navigation Toggles (Includes locked intercept logic)
   document.querySelectorAll('.sidebar .menu-item').forEach(item => {
@@ -1434,6 +1436,72 @@ function setupEventListeners() {
   if (sosModal) {
     sosModal.addEventListener('click', (e) => {
       if (e.target === sosModal) cancelSOS();
+    });
+  }
+
+  // --- PORTAL LOGIN HANDLER ---
+  const loginForm = document.getElementById('form-login');
+  if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const loginId = document.getElementById('login-id').value.trim().toLowerCase();
+      const loginPass = document.getElementById('login-pass').value;
+      const errorMsg = document.getElementById('login-error-msg');
+      const card = document.getElementById('login-card-el');
+
+      const userAcc = Credentials[loginId];
+      if (userAcc && userAcc.pass === loginPass) {
+        // Success
+        State.isLoggedIn = true;
+        State.currentRole = userAcc.role;
+
+        // Hide login and show workspace
+        document.getElementById('login-container').style.display = 'none';
+        document.querySelector('.app-container').style.display = 'flex';
+        
+        // Hide errors and reset form
+        if (errorMsg) errorMsg.style.display = 'none';
+        loginForm.reset();
+
+        // Initialize role and views
+        changeRole(State.currentRole);
+        navigateTo('dashboard');
+
+        triggerNotification(`Secure Log In: Authenticated as ${State.userRoles[State.currentRole].name} (${State.currentRole.toUpperCase()}).`);
+        playSynthBeep(680, 'sine', 0.15);
+        speakText("Welcome back, logged in successfully.");
+      } else {
+        // Failure
+        playSynthBeep(180, 'sawtooth', 0.4);
+        if (errorMsg) errorMsg.style.display = 'block';
+        
+        // Shake card
+        if (card) {
+          card.classList.add('shake');
+          setTimeout(() => card.classList.remove('shake'), 400);
+        }
+        
+        const passInput = document.getElementById('login-pass');
+        if (passInput) passInput.value = '';
+        speakText("Access denied, invalid credentials.");
+      }
+    });
+  }
+
+  // --- PORTAL LOGOUT HANDLER ---
+  const logoutBtn = document.getElementById('btn-logout');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      State.isLoggedIn = false;
+      
+      // Hide workspace and show login overlay
+      document.querySelector('.app-container').style.display = 'none';
+      document.getElementById('login-container').style.display = 'flex';
+
+      // Play logoff synth beeps
+      playSynthBeep(320, 'triangle', 0.2);
+      triggerNotification("Session terminated. User logged out.");
+      speakText("Logged out successfully.");
     });
   }
 }
